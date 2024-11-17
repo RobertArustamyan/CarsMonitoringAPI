@@ -1,11 +1,14 @@
 from flask import Blueprint, request, jsonify
 from DatabaseWork.workWdatabase import WorkWithDb
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 cars_bp = Blueprint('cars', __name__)
 
 @cars_bp.route('get_cars', methods=['GET'])
 def get_cars():
-    db = WorkWithDb('Databases/cars.db')
+    db = WorkWithDb(os.getenv('CARS_DB'))
     db.connect()
     try:
         cars = db.fetch_all('SELECT * FROM cars')

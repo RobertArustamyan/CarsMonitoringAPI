@@ -1,12 +1,14 @@
 from flask import Blueprint, request, jsonify
 from DatabaseWork.workWdatabase import WorkWithDb
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 parts_bp = Blueprint('parts', __name__)
 
 @parts_bp.route('/get_parts', methods=['GET'])
 def get_parts():
-    db = WorkWithDb('Databases/parts.db')
+    db = WorkWithDb(os.getenv('PARTS_DB'))
     db.connect()
     try:
         parts = db.fetch_all('SELECT * FROM parts')
