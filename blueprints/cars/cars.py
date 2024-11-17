@@ -8,7 +8,7 @@ cars_bp = Blueprint('cars', __name__)
 
 @cars_bp.route('get_cars', methods=['GET'])
 def get_cars():
-    db = WorkWithDb(os.getenv('CARS_DB'))
+    db = WorkWithDb("Databases/cars.db")
     db.connect()
     try:
         cars = db.fetch_all('SELECT * FROM cars')
