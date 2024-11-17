@@ -6,7 +6,7 @@ load_dotenv()
 
 cars_bp = Blueprint('cars', __name__)
 
-@cars_bp.route('get_cars', methods=['GET'])
+@cars_bp.route('/get_cars', methods=['GET'])
 def get_cars():
     db = WorkWithDb("Databases/cars.db")
     db.connect()
