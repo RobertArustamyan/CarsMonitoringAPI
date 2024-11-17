@@ -10,3 +10,4 @@ app.register_blueprint(cars_bp, url_prefix='/cars')
 
 if __name__ == "__main__":
     app.run(debug=False)
+
